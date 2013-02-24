@@ -2,7 +2,7 @@
 #define MAINWINDOW_H
 #include "qextserialport.h"
 #include <QMainWindow>
-
+#include <QSettings>
 namespace Ui {
 	class MainWindow;
 }
@@ -26,6 +26,7 @@ class MainWindow : public QMainWindow
 
 	private:
 		Ui::MainWindow *ui;
+		QSettings settings;
 	public slots:
 		void onDataAvailable();
 };

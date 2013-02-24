@@ -10,6 +10,8 @@ MainWindow::MainWindow(QWidget *parent) :
 	serialPortsList <<"COM1"<<"COM2"<<"COM3"<<"COM4"<<"COM5"<<"COM6"<<"COM7"<<"COM8"<<"COM9";
 	serialPortsList <<"/dev/ttyS0"<<"/dev/ttyS1"<<"/dev/ttyS2"<<"/dev/ttyS3"<<"/dev/ttyS4"<<"/dev/ttyS5";
 	ui->comboBoxPortList->addItems(serialPortsList);
+	QString currentPortName = settings.value("portName","COM1").toString();
+	ui->comboBoxPortList->setEditText(currentPortName);
 }
 
 MainWindow::~MainWindow()
@@ -30,6 +32,7 @@ void MainWindow::on_pushButtonChahgePortState_clicked()
 	else {
 		portName = ui->comboBoxPortList->currentText();
 		serialPortInterface.setPortName(portName);
+		settings.setValue("portName",portName);
 		serialPortInterface.setQueryMode(QextSerialPort::EventDriven);
 		ui->pushButtonChahgePortState->setEnabled(false);
 		ui->statusBar->showMessage("Probing to open " + portName);
