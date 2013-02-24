@@ -6,12 +6,16 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>617</width>
+    <width>713</width>
     <height>362</height>
    </rect>
   </property>
   <property name="windowTitle">
-   <string>MainWindow</string>
+   <string>CuteTerm</string>
+  </property>
+  <property name="windowIcon">
+   <iconset>
+    <normaloff>application_osx_terminal.png</normaloff>application_osx_terminal.png</iconset>
   </property>
   <widget class="QWidget" name="centralWidget">
    <layout class="QVBoxLayout" name="verticalLayout_3" stretch="0,0,1">
@@ -63,7 +67,7 @@
       <property name="title">
        <string>Parameters</string>
       </property>
-      <layout class="QGridLayout" name="gridLayout">
+      <layout class="QGridLayout" name="gridLayout" columnstretch="0,0,0,0,0,0,0,0,0,0,0,0,0,0,1">
        <property name="leftMargin">
         <number>3</number>
        </property>
@@ -413,18 +417,10 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>617</width>
+     <width>713</width>
      <height>18</height>
     </rect>
    </property>
-  </widget>
-  <widget class="QToolBar" name="mainToolBar">
-   <attribute name="toolBarArea">
-    <enum>TopToolBarArea</enum>
-   </attribute>
-   <attribute name="toolBarBreak">
-    <bool>false</bool>
-   </attribute>
   </widget>
   <widget class="QStatusBar" name="statusBar"/>
  </widget>

@@ -12,6 +12,12 @@ MainWindow::MainWindow(QWidget *parent) :
 	ui->comboBoxPortList->addItems(serialPortsList);
 	QString currentPortName = settings.value("portName","COM1").toString();
 	ui->comboBoxPortList->setEditText(currentPortName);
+	ui->comboBox_BaudRate->setCurrentIndex(settings.value("baudRate",0).toInt());
+	ui->comboBox_DataBits->setCurrentIndex(settings.value("dataBits",0).toInt());
+	ui->comboBox_FlowControl->setCurrentIndex(settings.value("flowControl",0).toInt());
+	ui->comboBox_Parity->setCurrentIndex(settings.value("parity",0).toInt());
+	ui->comboBox_StopBits->setCurrentIndex(settings.value("stopBits",0).toInt());
+	ui->statusBar->showMessage("Project page is http://www.zoonman.com/projects/cuteterm/");
 }
 
 MainWindow::~MainWindow()
@@ -74,7 +80,7 @@ void MainWindow::on_pushButtonChahgePortState_clicked()
 			default:
 			break;
 		}
-
+		settings.setValue("baudRate",ui->comboBox_BaudRate->currentIndex());
 		switch (ui->comboBox_DataBits->currentIndex()) {
 			case 0:
 				serialPortInterface.setDataBits(DATA_5);
@@ -91,7 +97,7 @@ void MainWindow::on_pushButtonChahgePortState_clicked()
 			default:
 			break;
 		}
-
+		settings.setValue("dataBits",ui->comboBox_DataBits->currentIndex());
 		switch (ui->comboBox_FlowControl->currentIndex()) {
 			case 0:
 				serialPortInterface.setFlowControl(FLOW_OFF);
@@ -105,7 +111,7 @@ void MainWindow::on_pushButtonChahgePortState_clicked()
 			default:
 			break;
 		}
-
+		settings.setValue("flowControl",ui->comboBox_FlowControl->currentIndex());
 		switch(ui->comboBox_Parity->currentIndex()) {
 			case 0:
 				serialPortInterface.setParity(PAR_NONE);
@@ -123,7 +129,7 @@ void MainWindow::on_pushButtonChahgePortState_clicked()
 				serialPortInterface.setParity(PAR_SPACE);
 			break;
 		}
-
+		settings.setValue("parity",ui->comboBox_Parity->currentIndex());
 		switch (ui->comboBox_StopBits->currentIndex()) {
 			case 0:
 				serialPortInterface.setStopBits(STOP_1);
@@ -137,6 +143,7 @@ void MainWindow::on_pushButtonChahgePortState_clicked()
 			default:
 			break;
 		}
+		settings.setValue("stopBits",ui->comboBox_StopBits->currentIndex());
 		spi_state = serialPortInterface.open(QIODevice::ReadWrite);
 		if (spi_state) {
 			ui->statusBar->showMessage("Port is open!");
@@ -157,7 +164,6 @@ void MainWindow::on_pushButtonSendBytes_clicked()
 {
 	serialPortInterface.write(ui->plainTextEditSend->toPlainText().toAscii());
 	serialPortInterface.flush();
-
 }
 
 void MainWindow::onDataAvailable()
