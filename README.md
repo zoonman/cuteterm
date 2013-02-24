@@ -1,5 +1,5 @@
 CuteTerm
 ========
 
-Microterminal for serail connections.
+Microterminal for serial connections.
 Project page http://www.zoonman.com/projects/cuteterm/
