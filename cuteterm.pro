@@ -19,5 +19,11 @@ HEADERS  += mainwindow.h
 
 FORMS    += mainwindow.ui
 
+RC_FILE = cuteterm.rc
+
 include(qextserialport/src/qextserialport.pri)
+
+OTHER_FILES += \
+    cuteterm.rc \
+    cuteterm.ico
 
